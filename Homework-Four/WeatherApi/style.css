@@ -1,0 +1,79 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+}
+body{
+  background-image: url(./sl_031821_41530_20.jpg);
+  background-size:cover;
+  background-attachment: fixed;
+}
+
+nav{
+  margin-top: 2em;
+  display:flex; 
+  justify-content: center;
+   /* align-items: center; */
+
+
+}
+#searchBtn{
+  padding:0 20px 0 20px;
+  font-weight: bold;
+  background-color: antiquewhite;
+}
+#weatherContainer{
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+font-size: 20px;
+}
+.weather-container-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: biege;
+  width: 80%;
+  margin: 25px 0 ;
+  /* border: 1 solid black; */
+  box-shadow: 10px 5px 30px 20px #8CCAF3;
+  border-radius:20px;
+  padding: 30px 30px;
+}
+.weather-container-card__temperature{
+font-size: 80px;
+/* padding-left: 20px; */
+}
+.weather-container-card__wind{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.weather-container-card__humidity{
+  display: flex;
+  align-items: center;
+  /* font-size: 40px; */
+  
+}
+.weather-container-card__data{
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+}
+.weather_container-card_main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: biege;
+  width: 50%;
+  margin: 25px 0 ;
+  /* border: 1 solid black; */
+  box-shadow: 10px 5px 30px 20px #8CCAF3;
+  border-radius:20px;
+  padding: 30px 10px;
+}

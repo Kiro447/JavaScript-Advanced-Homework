@@ -1,0 +1,33 @@
+.container-main-card {
+    background-color: white;
+    max-width: 300px;
+    border-radius: 30px;
+    box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+    height: 130px;
+}
+
+.photo {
+    height: 250px;
+    width: 100%;
+    background-size: cover;
+}
+
+.card-text {
+    color: black;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 30px;
+    color: forestgreen;
+}
