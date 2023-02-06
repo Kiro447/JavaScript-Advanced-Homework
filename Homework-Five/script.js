@@ -1,5 +1,5 @@
 import textWrapper from './utilities.js'
-let womenBtn = document.getElementById('womenBtn')
+
 
 // function setData(key, data) {
 //     let dataToSave = typeof data == 'object' ? JSON.stringify(data) : data
@@ -28,14 +28,13 @@ function filter(test) {
 fetch('https://fakestoreapi.com/products')
     .then(res => res.json())
     .then(data => {
-        console.log(data)
-        let newArray = data.filter (x => x.category === "women's clothing")
         let category = dataMapper(data)
-        for (let element of data) {
-            // filter("women's clothing")
-            cardCreator(element)
-            console.log(element.category);
-        }
+
+        // for (let element of data) {
+        //     // filter("women's clothing")
+        //     cardCreator(element)
+        //     console.log(element.category);
+        // }
 
     })
 
@@ -57,10 +56,32 @@ function cardCreator(element) {
     `
 }
 
-function dataMapper(data,btn){
-    let newArray = data.filter(x => x.category === btn.value)
+function dataMapper(data, btn) {
+    let newArray = data.filter(x => x.category === womenBtn.value)
     return newArray;
 }
 
+
+
+let menBtn = document.getElementById('menBtn')
+let jewelBtn = document.getElementById('jewelBtn')
+let elecBtn = document.getElementById('elecBtn')
+let womenBtn = document.getElementById('womenBtn')
+
+
+menBtn.addEventListener('click', () => {
+    let category = menBtn.value;
+    fetch(`https://fakestoreapi.com/products?category=${category}`)
+      .then(res => res.json())
+      .then(data => {
+        let filteredData = dataMapper(data);
+        console.log(data);
+        for (let element of filteredData) {
+
+          cardCreator(element);
+        }
+      })
+      .catch(error => console.error(error));
+  });
 
 
