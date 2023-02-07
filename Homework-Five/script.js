@@ -1,22 +1,8 @@
 import textWrapper from './utilities.js'
-
-
-// function setData(key, data) {
-//     let dataToSave = typeof data == 'object' ? JSON.stringify(data) : data
-//     localStorage.setItem(key, dataToSave);
-// }
-
-// function getData(key) {
-//     let dataToReturn;
-//     dataToReturn = localStorage.getItem(key);
-//     try {
-//         dataToReturn = JSON.parse(dataToReturn)
-//     }
-//     catch (e) {
-//         dataToReturn = dataToReturn;
-//     };
-//     return dataToReturn;
-// }
+let first = 'https://fakestoreapi.com/products'
+window.onload = function() {
+    getSavedStoreData("");
+};
 
 // Categories men's clothing // jewelery /// electonics /// women's clothing
 function filter(test) {
@@ -24,19 +10,10 @@ function filter(test) {
     console.log(newArray);
     return newArray;
 }
-
-fetch('https://fakestoreapi.com/products')
-    .then(res => res.json())
-    .then(data => {
-        let category = dataMapper(data)
-
-        // for (let element of data) {
-        //     // filter("women's clothing")
-        //     cardCreator(element)
-        //     console.log(element.category);
-        // }
-
-    })
+function dataMapper(data, btn) {
+    let newArray = data.filter(x => x.category === womenBtn.value)
+    return newArray;
+}
 
 
 function cardCreator(element) {
@@ -56,32 +33,56 @@ function cardCreator(element) {
     `
 }
 
-function dataMapper(data, btn) {
-    let newArray = data.filter(x => x.category === womenBtn.value)
-    return newArray;
+async function getStoreData() {
+    const preloadedData = sessionStorage.getItem('storeData');
+
+    if (!preloadedData) {
+        try {
+            const response = await fetch(`https://fakestoreapi.com/products/`);
+            const data = await response.json();
+            sessionStorage.setItem('storeData', JSON.stringify(data));
+            return data;
+        } catch (e) {
+            console.log('Whoa! Fetch error with getStoreData()');
+        }
+    } else {
+        return JSON.parse(preloadedData);
+    }
 }
 
-
-
+async function getSavedStoreData(category) {
+    document.getElementById("mainDiv").innerHTML = "";
+    const storeData = await getStoreData();
+    if(category === ""){
+        for (let element of storeData){
+            cardCreator(element)
+        }
+    }else{
+    const filteredData = storeData.filter(x => x.category == category);
+    for (let key in filteredData) {
+        let elements = filteredData[key];
+        cardCreator(elements);
+    }}
+}
+let homeBtn = document.getElementById('homeBtn')
 let menBtn = document.getElementById('menBtn')
 let jewelBtn = document.getElementById('jewelBtn')
 let elecBtn = document.getElementById('elecBtn')
 let womenBtn = document.getElementById('womenBtn')
 
-
 menBtn.addEventListener('click', () => {
-    let category = menBtn.value;
-    fetch(`https://fakestoreapi.com/products?category=${category}`)
-      .then(res => res.json())
-      .then(data => {
-        let filteredData = dataMapper(data);
-        console.log(data);
-        for (let element of filteredData) {
-
-          cardCreator(element);
-        }
-      })
-      .catch(error => console.error(error));
-  });
-
-
+    getSavedStoreData("men's clothing");
+});
+jewelBtn.addEventListener('click', () => {
+    console.log('jewel Btn is clicked');
+    getSavedStoreData("jewelery");
+});
+womenBtn.addEventListener('click', () => {
+    getSavedStoreData("women's clothing");
+});
+elecBtn.addEventListener('click', () => {
+    getSavedStoreData("electronics");
+});
+homeBtn.addEventListener('click', () => {
+    getSavedStoreData("");
+});
