@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <h1 class="d-flex justify-content-center my-5">FAKE STORE API</h1>
     <div class="cateories d-flex justify-content-center my-3">
         <button class="btn btn-primary mx-1" id="homeBtn">Home</button>
@@ -22,6 +23,53 @@
     </div>
     <div id="mainDiv" class="col-12 d-flex flex-wrap justify-content-center">
     </div>
+
+</div>
+
+<h1>Register Form</h1>
+    <form id="register-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username">
+      <br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+      <br><br>
+      <input type="button" value="Register" onclick="register()">
+    </form>
+    <br><br>
+    <h1>Login Form</h1>
+    <form id="login-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username">
+      <br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+      <br><br>
+      <input type="button" value="Login" onclick="login()">
+    </form>
+    <br><br>
+    <div id="product-container"></div>
+    <br><br>
+    <div id="cart-container" style="display:none;">
+      <h1>Cart</h1>
+      <table id="cart-table">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cart-body">
+        </tbody>
+      </table>
+      <br><br>
+      Total: <span id="cart-total"></span>
+    </div>
+  </body>
+
+    <script src="./register.js"></script>
     <script src="./utilities.js" type="module"></script>
     <script src="./script.js" type="module"></script>
 
