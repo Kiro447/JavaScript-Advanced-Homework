@@ -28,6 +28,42 @@
 
 .price {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 20px;
     color: forestgreen;
+}
+
+.addToCart {
+    font-size: 15px;
+    display: flex;
+    padding: 3px 7px !important;
+}
+
+.material-symbols {
+    color: black;
+}
+
+.shoppingCart {
+    height: 30px;
+}
+
+.cart {
+    border: none;
+    background-color: transparent;
+}
+
+.cartContent{
+    max-width: 80%;
+    max-height:200px;
+}
+
+.cartTitle {
+
+
+}
+.cartImages{
+    height: 150px;
+    /* width: 100%; */
+}
+.cartPrices {
+
 }

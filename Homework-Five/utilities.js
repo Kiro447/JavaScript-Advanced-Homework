@@ -1,8 +1,4 @@
 
-let menBtn = document.getElementById('menBtn')
-let jewelBtn = document.getElementById('jewelBtn')
-let elecBtn = document.getElementById('elecBtn')
-let womenBtn = document.getElementById('womenBtn')
 
 
 function textWrapper(element, maxLength) {
