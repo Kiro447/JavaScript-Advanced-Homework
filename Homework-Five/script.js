@@ -74,7 +74,6 @@ const womenBtn = document.getElementById('womenBtn')
 
 //  frla nekoj error u shoppingCart ako otidam linkot  script.js:98 Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')at script.js:98:20 ako ne gi stavam site u IF
 
-
 menBtn.addEventListener('click', () => {
     getSavedStoreData("men's clothing");
 });
