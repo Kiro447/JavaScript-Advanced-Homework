@@ -1,4 +1,4 @@
-import textWrapper from './utilities.js'
+import textWrapper from "./src/utilities.js"
 let fetchUrl = 'https://fakestoreapi.com/products'
 window.onload = function () {
     getSavedStoreData("");
@@ -72,8 +72,6 @@ const elecBtn = document.getElementById('elecBtn')
 const womenBtn = document.getElementById('womenBtn')
 
 
-//  frla nekoj error u shoppingCart ako otidam linkot  script.js:98 Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')at script.js:98:20 ako ne gi stavam site u IF
-
 menBtn.addEventListener('click', () => {
     getSavedStoreData("men's clothing");
 });
@@ -111,6 +109,11 @@ document.addEventListener('click', function (event) {
             price: event.target.previousElementSibling.textContent,
             image: event.target.parentElement.previousElementSibling.previousElementSibling.firstChild.src
         };
+        document.getElementById('cartHeader').innerText = 'Cart'
+        document.getElementById('cartProducts').innerText = 'Product Description'
+        document.getElementById('cartImages').innerText = 'Image'
+        document.getElementById('cartPrices').innerText = 'Price'
+        
         addedItems.push(item);
         totalPrice += parseFloat(item.price.substring(0, item.price.length - 2));
         console.log(displayTotalPrice);
@@ -130,7 +133,7 @@ let mainCart = document.getElementById('mainCart');
 
 function cartExpand() {
     let cartContent = document.createElement('div');
-    cartContent.classList = 'cartContent d-flex justify-content-around';
+    cartContent.classList = 'cartContent d-flex';
     mainCart.appendChild(cartContent);
     for (let i = 0; i < addedItems.length; i++) {
         let item = addedItems[i];
@@ -139,7 +142,7 @@ function cartExpand() {
         price = parseFloat(price);
         cartContent.innerHTML = `
         <div class="cartTitle align-center" id="cartTitle">${title}</div>
-        <div  id="cartImages"><img class="cartImages" src="${image}"></div>
+        <div  id="cartImages" class="imagesDiv" ><img class="cartImages" src="${image}"></div>
         <div class="cartPrices" id="cartPrices">${price}</div>
         <button class="btn btn-danger removeBtn">Remove</button>
         `;
